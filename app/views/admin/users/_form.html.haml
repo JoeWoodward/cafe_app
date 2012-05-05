@@ -1,0 +1,9 @@
+= simple_form_for(@user, :html => { :class => 'form-horizontal' }, :url => admin_user_path(@user)) do |f|
+  = f.input :first_name, :input_html => { :class => "span6" }
+  = f.input :last_name, label: 'Surname', :input_html => { :class => "span6" }
+  = f.input :email, :input_html => { :class => "span6" }
+  - if current_user == @user || self.controller.action_name == 'new'
+    = f.input :password, :input_html => { :class => "span6" }
+    = f.input :password_confirmation, :input_html => { :class => "span6" }
+  .form-actions
+    = f.button :submit, 'Save', :class => 'btn-primary'

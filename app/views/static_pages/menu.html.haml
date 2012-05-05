@@ -1,0 +1,88 @@
+- title 'A Cafe | Menu'
+.content
+  %h4 Would you like your order delivered?
+  %p
+    We offer a delivery service free of charge to addresses on Churchfields Estate between 
+    %b 9am
+    and
+    %b 2pm,
+    %b Monday
+    to
+    %b Friday.
+    (minimum order of £3.00)
+  %p We will also deliver to neighbouring addresses, but please phone to check before ordering.
+
+.menu-banner Specials
+.specials-board
+  .menu-items#special-items
+    - @specials.each_with_index do |special, index|
+      - last_special = @specials.count - 1 == index ? "last" : nil
+      .menu-item{class: last_special}
+        .item-info
+          %h4= special.title
+          %p= special.description
+        .prices
+          .price= price(special.price_pound, special.price_pence)
+          .clear
+        .clear
+      .clear
+
+.menu-banner Menu
+
+%ul.which-menu
+  %li.active.alignleft{"data-menu" => 'eat-in', "data-menu-hide" => 'take-away'}= link_to 'Eat In', 'javascript:void(0)'
+  %li.alignright{"data-menu" => 'take-away', "data-menu-hide" => 'eat-in'}= link_to 'Take Away', 'javascript:void(0)'
+  .clear
+.eat-in
+  %ul.menu-nav
+    - @eat_in.categories.each_with_index do |category, index|
+      - active = index == 0 ? "active" : nil
+      %li{class: active}= link_to category.name, "javascript:void(0)", "data-category" => "#{category.name.parameterize}"
+  .menu
+    .menu-content
+      - @eat_in.categories.each_with_index do |category, index|
+        - active = index == 0 ? "active" : nil
+        .fadable{class: "#{category.name.parameterize} #{active}"}
+          = image_tag category.image.full_size.url, alt: category.name, class: 'category-image'
+          .category-description
+            %p= markdown(category.description)
+          .clear
+          .menu-items
+            - category.menu_items.each_with_index do |product, index|
+              - last_item = category.menu_items.count - 1 == index ? "last" : nil
+              .menu-item{class: last_item}
+                .item-info
+                  %h4= product.title
+                  %p= product.description
+                .price= price(product.price_pound, product.price_pence)
+                .clear
+            .clear
+          .clear
+        .clear
+
+.take-away
+  %ul.menu-nav
+    - @take_away.categories.each_with_index do |category, index|
+      - active = index == 0 ? "active" : nil
+      %li{class: active}= link_to category.name, "javascript:void(0)", "data-category" => "#{category.name.parameterize}"
+  .menu
+    .menu-content
+      - @take_away.categories.each_with_index do |category, index|
+        - active = index == 0 ? "active" : nil
+        .fadable{class: "#{category.name.parameterize} #{active}"}
+          = image_tag category.image.full_size.url, alt: category.name, class: 'category-image'
+          .category-description
+            %p= markdown(category.description)
+          .clear
+          .menu-items
+            - category.menu_items.each_with_index do |product, index|
+              - last_item = category.menu_items.count - 1 == index ? "last" : nil
+              .menu-item{class: last_item}
+                .item-info
+                  %h4= product.title
+                  %p= product.description
+                .price= price(product.price_pound, product.price_pence)
+                .clear
+            .clear
+          .clear
+        .clear

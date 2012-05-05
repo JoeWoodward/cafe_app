@@ -1,0 +1,13 @@
+%h1 #{ @section.name.titleize } / Edit Category
+%br
+%br
+= simple_form_for([:admin, @section, @category], :html => {:multipart => true, :class => 'form-horizontal'}) do |f|
+  = f.error_notification
+  = f.input :name, input_html: { class: 'span6' }
+  .markdown-enabled
+    = f.input :description, input_html: { class: 'span6' }, hint: 'General description of items within the category'
+    = render 'layouts/admin/markdown_guide'
+  = f.input :image
+  .form-actions
+    = f.button :submit, 'Save', :class => 'btn-primary'
+    = link_to 'Cancel', [:admin, @section, :categories], class: 'btn'

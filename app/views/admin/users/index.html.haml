@@ -1,0 +1,34 @@
+%h1 Listing Administrators
+
+= link_to 'New Administrator', new_admin_user_path, :class=>"btn btn-primary pull-right"
+
+%br
+%br
+
+= paginate @users
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th Name
+      %th Email
+      %th &nbsp
+  %tbody
+    %tr{:class => 'even'}
+      %td= current_user.full_name
+      %td= current_user.email
+      %td
+        = link_to 'View', admin_user_path(current_user), class: 'btn'
+        = link_to 'Edit', edit_admin_user_path(current_user), class: 'btn btn-primary'
+        = link_to 'Delete', '#', class: 'btn btn-danger disabled'
+    - @users.each do |user|
+      - unless user == current_user
+        %tr{:class => cycle("odd", "even")}
+          %td= user.full_name
+          %td= user.email
+          %td
+            = link_to 'View', admin_user_path(user), class: 'btn'
+            = link_to 'Edit', edit_admin_user_path(user), class: 'btn btn-primary'
+            = link_to 'Delete', admin_user_path(user), method: :delete, confirm: "Are you sure?", class: 'btn btn-danger'
+
+= paginate @users

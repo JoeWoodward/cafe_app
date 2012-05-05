@@ -1,0 +1,9 @@
+%h1 Choose a new password
+= simple_form_for @user, :html => { :class => 'form-horizontal', :method => :put }, :url => admin_password_reset_path(@user) do |f|
+  = f.error_notification
+  = f.input :email, :input_html => { :class => "span6", :value => @user.email }
+  = f.input :password, :input_html => { :class => "span6" }
+  = f.input :password_confirmation, :input_html => { :class => "span6" }
+  = hidden_field_tag :token, @token
+  .form-actions
+    = f.submit

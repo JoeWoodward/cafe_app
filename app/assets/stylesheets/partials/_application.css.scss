@@ -1,0 +1,139 @@
+html {
+  height: 100%;
+
+  body {
+    background-color: #f8f8f8;
+  }
+}
+
+body {
+  height: 100%;
+  background-color: #f8f8f8;
+  text-shadow: 1px 1px 0px white;
+  color: $bodycolor;
+
+  p {
+    font: normal #{$fontsize}/#{$lineheight} $sans;
+  }
+
+  #container {
+    @include container;
+    min-height: 100%;
+    margin-bottom: -$footer_height;
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+    article {
+      @include full;
+    }
+  }
+
+  #footer-push {
+    height: $footer_height;
+    clear: both;
+  }
+}
+
+/* Text and image selection styling */
+
+::selection {
+  background: $highlight;
+  color: #fff;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: $highlight;
+  color: #fff;
+  text-shadow: none;
+}
+
+img::selection {
+  background: transparent;
+}
+
+img::-moz-selection {
+  background: transparent;
+}
+
+/*  =LINKS
+----------------------------------------------------------------------*/
+
+a {
+  -webkit-tap-highlight-color: $highlight;
+  color: $accent;
+}
+
+a:hover, a:focus {
+  color: saturate($accent, 20%);
+}
+
+/*  =HEADINGS
+----------------------------------------------------------------------*/
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: $serif;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Grouped headings */
+
+hgroup {
+  margin-bottom: $lineheight;
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0;
+  }
+}
+
+/* Sub headings, in a hgroup for instance */
+
+.sub {
+  color: #888;
+  font-style: italic;
+}
+
+h1 {
+  font-size: 2.618em;
+  line-height: $lineheight*2;
+  margin-bottom: $lineheight;
+
+  &.huge {
+    font-size: 4.236em;
+    line-height: $lineheight*3;
+  }
+}
+
+h2 {
+  font-size: 1.984em;
+  line-height: $lineheight*2;
+  margin-bottom: ceil($lineheight / 2);
+}
+
+h3 {
+  font-size: 1.618em;
+  margin-bottom: ceil($lineheight / 2);
+}
+
+h4 {
+  font-size: 1.226em;
+  margin-bottom: ceil($lineheight / 4);
+}
+
+h5 {
+  font-size: 1.1em;
+}
+
+/*  =MISC ELEMENTS
+----------------------------------------------------------------------*/
+
+pre {
+  background-color: #eee;
+  padding: ceil($lineheight / 4) $gutter;
+}
+
+blockquote {
+  font-family: $serif;
+  font-size: 1.1em;
+}

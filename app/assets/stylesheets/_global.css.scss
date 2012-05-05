@@ -1,0 +1,113 @@
+// Dimensions
+
+$footer_height: 8em;
+
+// Colors
+
+$accent:    darken(#298FE3, 10%);   // Blue
+$comp:      lighten(yellow, 30%);   // Dark blue
+$highlight:   #30a9ac;          // For callouts, for example
+$bodycolor:   #777;
+
+// Susy Variables
+
+// 16 cols
+// $total-cols: 16;
+// $col-width: 40px;
+// $gutter-width: 20px;
+// $side-gutter-width: $gutter-width*2;
+
+$total-cols: 12;
+$col-width: 60px;
+$gutter-width: 20px;
+$side-gutter-width: $gutter-width*2;
+
+// Used by Hashgrid
+$gutter: 20px;
+
+// Typography
+
+@font-face {
+  font-family: 'TitilliumBold';
+  src:  url(font-path('TitilliumBold-webfont.eot') + "?#iefix") format('embedded-opentype'),
+        url(font-path('TitilliumBold-webfont.woff')) format('woff'),
+        url(font-path('TitilliumBold-webfont.ttf')) format('truetype'),
+        url(font-path('TitilliumBold-webfont.svg') + '#Titillium') format('svg');
+  font-weight: 'bold';
+  font-style: 'normal';
+}
+
+@font-face {
+  font-family: 'Titillium';
+  src:  url(font-path('Titillium-webfont.eot') + "?#iefix") format('embedded-opentype'),
+        url(font-path('Titillium-webfont.woff')) format('woff'),
+        url(font-path('Titillium-webfont.ttf')) format('truetype'),
+        url(font-path('Titillium-webfont.svg') + '#Titillium') format('svg');
+  font-weight: 'normal';
+  font-style: 'normal';
+}
+
+@font-face {
+  font-family: 'PatuaOne';
+  src:  url(font-path('PatuaOne-webfont.eot') + "?#iefix") format('embedded-opentype'),
+        url(font-path('PatuaOne-webfont.woff')) format('woff'),
+        url(font-path('PatuaOne-webfont.ttf')) format('truetype'),
+        url(font-path('PatuaOne-webfont.svg') + '#PatuaOne') format('svg');
+}
+
+$sans:        'Titillium', Helvetica, sans-serif;
+$sans_bold:   'TitilliumBold', Helvetica, sans-serif;
+$serif:       'PatuaOne', Georgia, serif;
+$monospaced:  Monaco, "Courier New", Courier, monospace;
+
+$fontsize:      13px;
+$lineheight:    20px;
+
+// Imports
+
+@import "susy";
+@import "library/normalize";
+@import "compass";
+@import "compass/css3";
+@import "compass/utilities";
+
+// Custom mixins
+
+@mixin debugmessage($message, $color: yellow) {
+  &::before {
+    content: $message;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    background: #{$color};
+    position: absolute;
+    @include stretch($height: false);
+    z-index: 999;
+    top: 0;
+  }
+}
+
+
+@mixin stretch($height: true, $width: true) {
+  position: absolute;
+  @if($height == true) {
+    top: 0;
+    bottom: 0;
+  }
+  @if($width == true) {
+    right: 0;
+    left: 0;
+  }
+}
+
+// Animations
+
+/*  =GLOBAL ANIMATIONS
+----------------------------------------------------------------------*/
+
+/* Reseting animation */
+
+@-webkit-keyframes reset {
+  0%      { opacity: 0;}
+  100%    { opacity: 0;}
+}

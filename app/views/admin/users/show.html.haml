@@ -1,0 +1,11 @@
+= link_to 'All Administrators', admin_users_path, class: 'btn'
+%br
+%br
+= @user.full_name
+%br
+= @user.email
+%br
+%br
+= link_to 'Edit', edit_admin_user_path(@user), :class => 'btn btn-primary'
+- unless current_user == @user
+  = link_to 'Delete', admin_user_path(@user), :method => :delete, :class => 'btn btn-danger'

@@ -1,0 +1,8 @@
+= form_tag admin_password_resets_path, :method => :post, :class => 'simple_form form-horizontal' do
+  .control-group
+    = label_tag :email, 'Email *', :class => 'email required control-label'
+    .controls
+      = text_field_tag :email, params[:email], :class => 'email required string span6'
+  .form-actions
+    = submit_tag 'Reset', :class => 'button btn btn-primary'
+    = link_to 'Cancel', login_path, :class => 'button btn btn-danger'

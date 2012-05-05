@@ -1,0 +1,6 @@
+- content_for :menu_item_form_button do
+  = link_to 'Cancel', [:admin, @section, @category, @menu_item], class: 'btn'
+%h1 #{@section.name.titleize} / #{@category.name} Category / Edit Menu Item
+%br
+%br
+= render 'form'

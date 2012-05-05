@@ -1,0 +1,39 @@
+%h1 Reordering Menu Items for #{@section.name.titleize}
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th.title Title
+      %th.description Description
+      %th.price Price
+      %th= link_to 'Done', [:admin, @section, @category], class: 'btn btn-success btn-reorder'
+  %tbody#sortable
+    - @menu_items.each do |menu_item|
+      %tr{id: "menu_item_#{menu_item.id}"}
+        %td.handle.title= menu_item.title
+        %td.handle.description= menu_item.description.truncate(150)
+        %td.handle.price= price(menu_item.price_pound, menu_item.price_pence)
+        %td.handle.center= image_tag 'reorder_handle.png'
+
+- content_for :javascripts do
+  :javascript
+     $('#sortable').sortable(
+        {
+          axis: 'y',
+          dropOnEmpty:false,
+          handle: '.handle',
+          cursor: 'move',
+          items: 'tr',
+          opacity: 0.4,
+          scroll: true,
+          update: function(){
+            $.ajax({
+                type: 'post',
+                data: $('#sortable').sortable('serialize') + "&id=#{@category.id.to_s}",
+                dataType: 'script',
+                complete: function(request){
+                    $('#sortable').effect('highlight');
+                  },
+                url: "/admin/#{@section.name.parameterize}/categories/#{@category.name.parameterize}/menu-items/sort"})
+            }
+          })

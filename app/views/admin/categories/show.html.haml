@@ -1,0 +1,47 @@
+%h1 #{@section.name.titleize} / #{@category.name} Category
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th.title Category
+      %th.description Description
+      %th.image Image
+      %th &nbsp
+
+  %tbody
+    %tr
+      %td.title= @category.name
+      %td.description= markdown(@category.description)
+      %td.image= image_tag @category.image.thumb.url
+      %td
+        = link_to 'Edit', [:edit, :admin, @section, @category], :class => 'btn btn-primary'
+        = link_to 'Delete', [:admin, @section, @category], :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger'
+
+%br
+
+%h2
+  #{@section.name.titleize} / #{@category.name} Category / Menu Items
+  = link_to "New Menu Item", [:new, :admin, @section, @category, :menu_item], class: 'btn btn-primary btn-new'
+%br
+
+= paginate @menu_items
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th.title Title
+      %th.description Description
+      %th.price Price
+      %th= link_to 'Reorder Menu Items', [:reorder, :admin, @section, @category, :menu_items], class: 'btn btn-info btn-reorder'
+  %tbody
+    - @menu_items.each do |menu_item|
+      %tr{:class => cycle("odd", "even")}
+        %td.title= menu_item.title
+        %td.description= menu_item.description.truncate(150)
+        %td.price= price(menu_item.price_pound, menu_item.price_pence)
+        %td
+          = link_to 'View', [:admin, @section, @category, menu_item], class: 'btn'
+          = link_to 'Edit', [:edit, :admin, @section, @category ,menu_item], class: 'btn btn-primary'
+          = link_to 'Delete', [:admin, @section, @category, menu_item], method: :delete, confirm: "Are you sure?", class: 'btn btn-danger'
+
+= paginate @menu_items

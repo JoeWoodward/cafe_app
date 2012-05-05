@@ -1,0 +1,23 @@
+/*  =FOOTER
+----------------------------------------------------------------------*/
+
+footer {
+  @include container;
+  height: $footer_height;
+
+  #footer-container {
+    @include full;
+
+    .happy {
+      text-align: center;
+    }
+
+    .phone {
+      font-size: 45px;
+      width: 50%;
+      text-align: center;
+      margin-top: 30px;
+      float: left;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+%h1 #{@section.name.titleize} / #{@category.name} Category / View Menu Item
+%br
+%br
+= link_to 'Back', [:admin, @section, @category], class: 'btn'
+%br
+%br
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th.title Title
+      %th.description Description
+      %th.price Price
+      %th &nbsp
+  %tbody
+    %tr{class: "odd"}
+      %td.title= @menu_item.title
+      %td.description= @menu_item.description
+      %td.price= price(@menu_item.price_pound, @menu_item.price_pence)
+      %td
+        = link_to 'Edit', [:edit, :admin, @section, @category, @menu_item], class: 'btn btn-primary'
+        = link_to 'Delete', [:admin, @section, @category, @menu_item], method: :delete, confirm: "Are you sure?", class: 'btn btn-danger'

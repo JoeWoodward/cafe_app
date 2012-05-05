@@ -1,0 +1,41 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+*/
+
+/*----------------------------------------------------------------
+* Using Sass (http://sass-lang.com) and Compass (http://compass-style.org)
+*
+* Modular Scale  (http://modularscale.com/scale/?px1=14&px2=308&ra1=1.618&ra2=0)
+* ----------------------
+* 14px @ 1:1.618
+* 308px @ 1:1.618
+* ----------------------
+----------------------------------------------------------------*/
+
+// Set this variable to 'true' to enable debugging features
+$DEBUG: false;
+
+@import "global";
+@import "base";
+
+// Common
+
+@import "common";
+
+// Partials
+
+@import "partials/application";
+@import "partials/header";
+@import "partials/footer";
+
+// Views
+
+@import "views/static_pages/home";
+@import "views/static_pages/menu";
+@import "views/static_pages/location";
+
+@import "flexslider";
+// Needs to come last so that .column gets higher specificity
+@import "responsive";

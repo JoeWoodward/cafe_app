@@ -1,0 +1,21 @@
+%h1 View Special
+%br
+%br
+= link_to 'Back', [:admin, :specials], class: 'btn'
+%br
+%br
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th.title Title
+      %th.description Description
+      %th.price Price
+      %th &nbsp
+  %tbody
+    %tr{class: "odd"}
+      %td.title= @special.title
+      %td.description= @special.description
+      %td.price= price(@special.price_pound, @special.price_pence)
+      %td
+        = link_to 'Edit', [:edit, :admin, @special], class: 'btn btn-primary'
+        = link_to 'Delete', [:admin, @special], method: :delete, confirm: "Are you sure?", class: 'btn btn-danger'

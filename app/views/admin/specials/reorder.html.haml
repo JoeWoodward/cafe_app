@@ -1,0 +1,39 @@
+%h1 Reordering Specials
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th.title Title
+      %th.description Description
+      %th.price Price
+      %th= link_to 'Done', [:admin, :specials], class: 'btn btn-success btn-reorder'
+
+  %tbody#sortable
+    - @specials.each do |special|
+      %tr{ id: "special_#{special.id}" }
+        %td.handle.title= special.title
+        %td.handle.description= special.description
+        %td.handle.price= price(special.price_pound, special.price_pence)
+        %td.handle.center= image_tag 'reorder_handle.png'
+- content_for :javascripts do
+  :javascript
+     $('#sortable').sortable(
+        {
+          axis: 'y',
+          dropOnEmpty:false,
+          handle: '.handle',
+          cursor: 'move',
+          items: 'tr',
+          opacity: 0.4,
+          scroll: true,
+          update: function(){
+            $.ajax({
+                type: 'post',
+                data: $('#sortable').sortable('serialize') + "&id=1",
+                dataType: 'script',
+                complete: function(request){
+                    $('#sortable').effect('highlight');
+                  },
+                url: '/admin/specials/sort'})
+            }
+          })

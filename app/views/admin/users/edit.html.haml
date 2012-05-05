@@ -1,0 +1,11 @@
+= link_to 'Show', admin_user_path(@user), class: 'btn'
+= link_to 'All Administrators', admin_users_path, class: 'btn'
+%br
+%br
+- if current_user == @user
+  %h1 Edit Your Details
+- else
+  %h1 Edit Administrators Details
+%br
+%br
+= render 'form'

@@ -1,0 +1,163 @@
+/*  =UTILS AND BASE CONFIGURATION
+----------------------------------------------------------------------*/
+
+/*- ELEMENT SETUP
+----------------------------------------------------------------------*/
+
+img {
+  max-width: 100%;
+  height: auto;
+
+  &.noscale {
+    max-width: none;
+  }
+}
+
+/* Make links 'clickable' */
+a {
+  position: relative;
+}
+
+a:active, a:focus {
+  outline: none;
+  top: 1px;
+}
+
+/* Make table headings align left */
+th {
+  text-align: left;
+}
+
+/* Emphasize the kbd element */
+kbd {
+  font-family: $sans;
+  font-weight: bolder;
+}
+
+del {
+  color: #666;
+}
+
+/* Style the hr element */
+
+hr {
+  border: 0;
+  height: 1px;
+  background-color: #e2e2e2;
+  width: 100%;
+  margin: $lineheight*2 auto $lineheight*2 - 1px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  /* Fixes kerning. Watch out for some performance issues. */
+  text-rendering: optimizeLegibility;
+  margin: 0;
+  padding: 0;
+  font-size: 1em;
+
+  a {
+    font-weight: inherit;
+  }
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+pre {
+  overflow: auto;
+}
+
+pre, code {
+  font-family: $monospaced;
+  /* Code doesn't look that good antialiased */
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+/*- GLOBAL HELPER CLASSES
+----------------------------------------------------------------------*/
+
+/* Nicer ampersand */
+.amp {
+  font-family: Baskerville, Palatino, "Palatino Linotype", "Book Antiqua", serif;
+  font-size: 1.4em;
+  font-style: italic;
+  font-weight: normal;
+}
+
+/* Quick floating */
+.alignleft {
+  float: left;
+}
+
+.alignright {
+  float: right;
+}
+
+.aligncenter {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+/* List styles */
+
+ul.bulleted {
+  list-style-type: disc;
+}
+
+ul.squared {
+  list-style-type: square;
+}
+
+ol.outside,
+ul.outside {
+  list-style-position: outside;
+  padding-left: 0;
+}
+
+/*- NON-SEMANTIC HELPER CLASSES
+----------------------------------------------------------------------*/
+
+/* Clearing stuff */
+.clear {
+  clear: both;
+  display: block;
+  height: 1px;
+  margin: -1px 0 0 0;
+}
+
+/* Clearfix hack */
+
+.group {
+  @include clearfix;
+}
+
+/* Hide for both screenreaders and browsers
+   css-discuss.incutio.com/wiki/Screenreader_Visibility */
+.hidden {
+  display: none;
+}
+
+/* Hide only visually, but have it available for screenreaders */
+.visuallyhidden {
+  position: absolute;
+  left: -999em;
+}
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible {
+  visibility: hidden;
+}

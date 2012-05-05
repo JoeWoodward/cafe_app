@@ -1,0 +1,6 @@
+- content_for :special_item_form_button do
+  = link_to 'Cancel', [:admin, @special], class: 'btn'
+%h1 New Special
+%br
+%br
+= render 'form'
