@@ -9,7 +9,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-module Riverspring
+module CafeApp
   class Application < Rails::Application
       config.generators do |generate|
       generate.test_framework   :rspec, :fixture => true, :views => false

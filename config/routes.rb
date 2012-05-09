@@ -1,4 +1,4 @@
-Riverspring::Application.routes.draw do
+CafeApp::Application.routes.draw do
   root :to => 'static_pages#home'
   match 'menu' => 'static_pages#menu', as: 'menu'
   match 'location' => 'static_pages#location', as: 'location'

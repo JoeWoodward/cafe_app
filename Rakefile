@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Riverspring::Application.load_tasks
+CafeApp::Application.load_tasks
